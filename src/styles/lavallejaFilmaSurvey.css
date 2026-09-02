@@ -1,0 +1,1254 @@
+/* ============================================
+   Lavalleja Filma - Survey Landing Styles
+   Réplica fiel del sistema de diseño original
+   Tema oscuro con clases lf-*
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: dark;
+  /* Tema oscuro Lavalleja (por defecto) */
+  --color-base-100: oklch(15% 0.012 260);
+  --color-base-200: oklch(11% 0.012 260);
+  --color-base-300: oklch(8% 0.012 260);
+  --color-base-content: oklch(96% 0.005 95);
+  --color-base-muted: rgba(255, 255, 255, 0.65);
+  --color-base-subtle: rgba(255, 255, 255, 0.45);
+  --color-primary: oklch(68% 0.18 45);
+  --color-primary-content: oklch(15% 0.012 260);
+  --color-secondary: oklch(72% 0.13 165);
+  --color-secondary-content: oklch(15% 0.012 260);
+  --color-accent: oklch(78% 0.16 80);
+  --color-accent-content: oklch(15% 0.012 260);
+  --color-neutral: oklch(22% 0.012 260);
+  --color-neutral-content: oklch(96% 0.005 95);
+  --color-error: oklch(64% 0.22 25);
+  --color-error-content: oklch(98% 0.005 25);
+
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-placeholder: rgba(255, 255, 255, 0.4);
+  --select-option-bg: #15171e;
+  --select-option-color: #f1f3f9;
+  --select-option-selected-bg: #242630;
+  --chip-bg: rgba(255, 255, 255, 0.06);
+  --chip-border: rgba(255, 255, 255, 0.1);
+  --chip-color: rgba(255, 255, 255, 0.85);
+  --divider-color: rgba(255, 255, 255, 0.08);
+
+  --lf-glow: 0 0 60px rgba(220, 130, 70, 0.18);
+  --lf-grain: radial-gradient(
+      circle at 25% 20%,
+      rgba(255, 255, 255, 0.05) 0,
+      rgba(0, 0, 0, 0) 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(220, 130, 70, 0.08) 0,
+      rgba(0, 0, 0, 0) 60%
+    );
+}
+
+/* Modo Diurno / Light Theme */
+[data-theme="light"] {
+  color-scheme: light;
+  --color-base-100: #f8f9fc;
+  --color-base-200: #eef1f6;
+  --color-base-300: #e2e6ee;
+  --color-base-content: #131722;
+  --color-base-muted: #4b5563;
+  --color-base-subtle: #6b7280;
+  --color-primary: #ea580c;
+  --color-primary-content: #ffffff;
+  --color-secondary: #0d9488;
+  --color-secondary-content: #ffffff;
+  --color-accent: #d97706;
+  --color-accent-content: #ffffff;
+  --color-neutral: #e5e7eb;
+  --color-neutral-content: #111827;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --input-bg: #f8fafc;
+  --input-border: #cbd5e1;
+  --input-placeholder: #94a3b8;
+  --select-option-bg: #ffffff;
+  --select-option-color: #0f172a;
+  --select-option-selected-bg: #f1f5f9;
+  --chip-bg: #f1f5f9;
+  --chip-border: #cbd5e1;
+  --chip-color: #334155;
+  --divider-color: #e2e8f0;
+
+  --lf-glow: 0 0 40px rgba(234, 88, 12, 0.12);
+  --lf-grain: radial-gradient(
+      circle at 25% 20%,
+      rgba(234, 88, 12, 0.04) 0,
+      rgba(255, 255, 255, 0) 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(13, 148, 136, 0.04) 0,
+      rgba(255, 255, 255, 0) 60%
+    );
+}
+
+html[data-font-size="small"] {
+  font-size: 90%;
+}
+
+html[data-font-size="large"] {
+  font-size: 115%;
+}
+
+html[data-font-size="xlarge"] {
+  font-size: 130%;
+}
+
+html, body {
+  background: var(--color-base-200);
+  color: var(--color-base-content);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ============================================
+   Clases del sistema original (réplica)
+   ============================================ */
+
+.lf-display {
+  font-family: "Bebas Neue", "Oswald", "Anton", "Inter", ui-sans-serif, system-ui,
+    sans-serif;
+  letter-spacing: 0.005em;
+  font-weight: 400;
+}
+
+.lf-mono {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.lf-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--lf-grain);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lf-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.55) 55%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+}
+
+.lf-text-shadow {
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.65);
+}
+
+.lf-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+}
+
+.lf-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(6px);
+}
+
+.lf-input {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--color-base-content);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+.lf-input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.lf-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(220, 130, 70, 0.15);
+}
+
+.lf-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lf-input.error {
+  border-color: var(--color-error);
+}
+
+.lf-input.error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.lf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-family: inherit;
+}
+
+.lf-btn-primary {
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+}
+
+.lf-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.lf-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lf-btn-ghost {
+  border: 1px solid var(--card-border);
+  color: var(--color-base-content);
+  background: transparent;
+}
+
+.lf-btn-ghost:hover:not(:disabled) {
+  background: var(--chip-bg);
+  border-color: var(--color-primary);
+}
+
+.lf-btn-ghost:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.lf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  color: var(--chip-color);
+}
+
+/* ============================================
+   Estructura de la landing
+   ============================================ */
+
+.lf-app {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.lf-page {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.lf-page-header {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.lf-page-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.lf-page-brand-logo {
+  display: block;
+  width: 11.5rem;
+  aspect-ratio: 781 / 340;
+  flex-shrink: 0;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.7rem;
+  background: #0b0e0d;
+  box-shadow: 0 0.45rem 1.4rem rgba(4, 7, 6, 0.2);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.lf-page-brand-logo:hover,
+.lf-page-brand-logo:focus-visible {
+  opacity: 0.82;
+  transform: translateY(-1px);
+}
+
+.lf-page-brand-logo:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 0.35rem;
+}
+
+.lf-page-brand-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lf-page-brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.lf-page-brand-name {
+  font-family: "Bebas Neue", "Oswald", "Inter", sans-serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--color-base-content);
+}
+
+.lf-page-brand-note {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-base-subtle);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.lf-page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lf-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: 9999px;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  color: var(--color-base-content);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.lf-theme-toggle:hover {
+  background: var(--card-bg);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.lf-theme-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  transition: transform 0.25s ease;
+}
+
+.lf-theme-toggle:hover .lf-theme-icon {
+  transform: rotate(15deg);
+}
+
+.lf-font-size-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lf-font-size-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: 9999px;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  color: var(--color-base-content);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.lf-font-size-toggle:hover,
+.lf-font-size-toggle:focus-visible {
+  background: var(--card-bg);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.lf-font-size-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+  transform: none;
+}
+
+.lf-font-size-toggle:disabled:hover {
+  background: var(--chip-bg);
+  border-color: var(--chip-border);
+  color: var(--color-base-content);
+}
+
+.lf-font-size-symbol {
+  line-height: 1;
+}
+
+.lf-font-size-symbol sup {
+  font-size: 0.65em;
+  margin-left: 0.05em;
+}
+
+.lf-page-backlink {
+  white-space: nowrap;
+}
+
+.lf-page-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.lf-page-hero {
+  padding: 2rem;
+}
+
+.lf-page-hero-chip {
+  margin-bottom: 1rem;
+}
+
+.lf-page-title {
+  font-family: "Bebas Neue", "Oswald", "Inter", sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 0.96;
+  letter-spacing: 0.01em;
+  color: var(--color-base-content);
+  margin-bottom: 1rem;
+}
+
+.lf-page-description {
+  max-width: 720px;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-base-muted);
+}
+
+.lf-page-content {
+  margin-top: 1.5rem;
+}
+
+.lf-landing-main {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.lf-landing-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.lf-landing-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lf-landing-card-title {
+  font-family: "Bebas Neue", "Oswald", "Inter", sans-serif;
+  font-size: 1.9rem;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  color: var(--color-base-content);
+}
+
+.lf-landing-card-text {
+  color: var(--color-base-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.lf-landing-card .lf-btn {
+  align-self: flex-start;
+}
+
+/* Header */
+.lf-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(11%, 12%, 13%, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lf-header-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.lf-header-title {
+  font-family: "Bebas Neue", "Oswald", "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  color: var(--color-base-content);
+}
+
+.lf-header-subtitle {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.lf-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lf-header-link {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.7);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.lf-header-link:hover {
+  color: var(--color-base-content);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.lf-header-link.active {
+  color: var(--color-primary);
+}
+
+/* Main */
+.lf-main {
+  padding-top: 5rem;
+}
+
+/* Hero */
+.lf-hero {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem 4rem;
+  overflow: hidden;
+}
+
+.lf-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    rgba(220, 130, 70, 0.12) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.lf-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.lf-hero-chip {
+  margin-bottom: 0.5rem;
+}
+
+.lf-hero-title {
+  font-family: "Bebas Neue", "Oswald", "Inter", sans-serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--color-base-content);
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.65);
+}
+
+.lf-hero-accent {
+  color: var(--color-primary);
+}
+
+.lf-hero-text {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 640px;
+  font-weight: 400;
+}
+
+.lf-hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+@media (min-width: 640px) {
+  .lf-hero-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Sections */
+.lf-section {
+  padding: 4rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.lf-section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lf-section-title {
+  font-family: "Bebas Neue", "Oswald", "Inter", sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--color-base-content);
+}
+
+.lf-section-subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Form containers */
+.lf-form-container {
+  padding: 2rem 1.5rem 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lf-form-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(6px);
+  border-radius: 1rem;
+  padding: 2rem;
+  scroll-margin-top: 6rem;
+}
+
+@media (min-width: 768px) {
+  .lf-form-card {
+    padding: 2.5rem;
+  }
+}
+
+.lf-form-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.lf-form-title {
+  font-family: "Bebas Neue", "Oswald", "Inter", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--color-base-content);
+  margin-bottom: 0.5rem;
+}
+
+.lf-form-description {
+  font-size: 0.875rem;
+  color: var(--color-base-muted);
+  line-height: 1.5;
+}
+
+/* Form sections */
+.lf-form-section {
+  margin-bottom: 2rem;
+}
+
+.lf-form-section-title {
+  font-family: "Bebas Neue", "Oswald", "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.lf-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .lf-form-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lf-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lf-captcha-group {
+  max-width: 22rem;
+  margin: 0 auto;
+}
+
+.lf-captcha-prompt {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4rem;
+  color: var(--color-base-muted);
+  font-size: 1rem;
+}
+
+.lf-captcha-prompt strong {
+  color: var(--color-base-content);
+  font-size: 1.25rem;
+}
+
+.lf-captcha-input {
+  text-align: center;
+  max-width: 10rem;
+  margin: 0 auto;
+}
+
+.lf-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-base-subtle);
+  font-weight: 500;
+}
+
+.lf-label-required {
+  color: var(--color-primary);
+  margin-left: 0.25rem;
+}
+
+.lf-help-text {
+  font-size: 0.75rem;
+  color: var(--color-base-subtle);
+  line-height: 1.4;
+}
+
+.lf-error-text {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.lf-error-text::before {
+  content: "⚠";
+  font-size: 0.875rem;
+}
+
+.lf-textarea {
+  min-height: 110px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.lf-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.lf-select option,
+select.lf-input option {
+  background-color: var(--select-option-bg);
+  color: var(--select-option-color);
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.lf-select option:disabled,
+.lf-select option[value=""],
+select.lf-input option:disabled,
+select.lf-input option[value=""] {
+  color: var(--input-placeholder);
+}
+
+.lf-select option:checked,
+select.lf-input option:checked {
+  background-color: var(--select-option-selected-bg);
+  color: var(--color-primary);
+}
+
+/* Radio & Checkbox */
+.lf-radio-group,
+.lf-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.lf-radio-label,
+.lf-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-base-content);
+  line-height: 1.5;
+}
+
+.lf-radio-label input[type="radio"],
+.lf-checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.lf-radio-label input[type="radio"]:disabled,
+.lf-checkbox-label input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+}
+
+/* Categories grid (selección múltiple) */
+.lf-categories-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.625rem;
+}
+
+@media (min-width: 640px) {
+  .lf-categories-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lf-category-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.625rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.lf-category-card:hover {
+  border-color: var(--color-primary);
+  background: var(--chip-bg);
+}
+
+.lf-category-card.selected {
+  background: rgba(220, 130, 70, 0.12);
+  border-color: var(--color-primary);
+}
+
+.lf-category-card input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.lf-category-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.lf-category-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-base-content);
+  margin-bottom: 0.25rem;
+}
+
+.lf-category-description {
+  font-size: 0.75rem;
+  color: var(--color-base-subtle);
+  line-height: 1.4;
+}
+
+/* Sub-opciones de categorías (ej. Gastronomía) */
+.lf-suboptions-box {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(220, 130, 70, 0.06);
+  border: 1px solid rgba(220, 130, 70, 0.3);
+  border-radius: 0.75rem;
+  animation: lfFadeIn 0.2s ease-out;
+}
+
+.lf-suboptions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.625rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .lf-suboptions-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lf-suboption-card {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 0.875rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.lf-suboption-card:hover {
+  border-color: var(--color-primary);
+  background: var(--chip-bg);
+}
+
+.lf-suboption-card.selected {
+  background: rgba(220, 130, 70, 0.14);
+  border-color: var(--color-primary);
+}
+
+.lf-suboption-card input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.lf-suboption-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.lf-suboption-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-base-content);
+}
+
+@keyframes lfFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Submit */
+.lf-form-submit {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.lf-form-submit .lf-btn {
+  min-width: 240px;
+  justify-content: center;
+}
+
+/* Form error banner */
+.lf-form-error-banner {
+  padding: 0.875rem 1rem;
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 0.5rem;
+  color: rgb(252, 165, 165);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Success message */
+.lf-success {
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.lf-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.15);
+  color: rgb(74, 222, 128);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.lf-success-title {
+  font-family: "Bebas Neue", "Oswald", "Inter", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-base-content);
+}
+
+.lf-success-text {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+/* File placeholder */
+.lf-file-placeholder {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.lf-file-note {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.25rem;
+}
+
+.lf-file-subnote {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Divider */
+.lf-section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  margin: 3rem auto;
+  max-width: 1200px;
+}
+
+/* Footer */
+.lf-footer {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--divider-color);
+  margin-top: 2rem;
+}
+
+.lf-footer-text {
+  font-size: 0.75rem;
+  color: var(--color-base-subtle);
+  letter-spacing: 0.05em;
+}
+
+.lf-footer-brand {
+  font-family: "Bebas Neue", "Oswald", "Inter", sans-serif;
+  font-size: 1.125rem;
+  color: var(--color-base-content);
+  margin-bottom: 0.5rem;
+}
+
+.lf-footer-contact {
+  margin-top: 0.65rem;
+  font-size: 0.75rem;
+  color: var(--color-base-subtle);
+}
+
+.lf-footer-contact a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+}
+
+.lf-footer-contact a:hover,
+.lf-footer-contact a:focus-visible {
+  color: var(--color-base-content);
+}
+
+/* Active form highlight */
+.lf-form-card.highlight {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary), 0 0 40px rgba(220, 130, 70, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .lf-page-header {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .lf-page-header-actions {
+    margin-left: auto;
+  }
+
+  .lf-page-brand-logo {
+    width: 8.5rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .lf-header {
+    padding: 0.875rem 1rem;
+  }
+
+  .lf-header-title {
+    font-size: 1.25rem;
+  }
+
+  .lf-header-subtitle {
+    display: none;
+  }
+
+  .lf-header-link {
+    font-size: 0.625rem;
+    padding: 0.375rem 0.625rem;
+  }
+
+  .lf-hero {
+    min-height: 70vh;
+    padding: 4rem 1rem 3rem;
+  }
+
+  .lf-section {
+    padding: 3rem 1rem;
+  }
+
+  .lf-form-container {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .lf-form-card {
+    padding: 1.5rem;
+  }
+
+  html[data-font-size="xlarge"] .lf-form-card {
+    padding: 1.25rem;
+  }
+}
