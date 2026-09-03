@@ -629,17 +629,6 @@ export default function ProviderServiceForm() {
           />
         </FormField>
 
-        <FormField label="Adjuntar archivos">
-          {/* TODO: Conectar carga real al backend cuando esté disponible */}
-          <div className="lf-file-placeholder">
-            <p className="lf-file-note">
-              La carga de archivos quedará disponible al conectar el sistema definitivo.
-            </p>
-            <p className="lf-file-subnote">
-              Por ahora podés compartir enlaces en el campo superior.
-            </p>
-          </div>
-        </FormField>
       </FormSection>
 
       {/* Sección 6: Autorización */}
