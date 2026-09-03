@@ -56,7 +56,7 @@ export default function SurveyPageShell({
         <p className="lf-footer-brand">Lavalleja Filma</p>
         <p className="lf-footer-text">Intendencia Departamental de Lavalleja</p>
         <p className="lf-footer-contact">
-          Contacto: <a href="mailto:lavallejafilma@lavalleja.uy">lavallejafilma@lavalleja.uy</a>
+          Contacto: <a href="mailto:filma@lavalleja.uy">filma@lavalleja.uy</a>
         </p>
       </footer>
     </div>

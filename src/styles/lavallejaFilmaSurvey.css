@@ -771,6 +771,12 @@ html, body {
   border-bottom: 1px solid var(--divider-color);
 }
 
+.lf-form-section-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .lf-form-grid {
   display: grid;
   grid-template-columns: 1fr;
